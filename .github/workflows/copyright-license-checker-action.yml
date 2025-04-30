@@ -1,29 +1,30 @@
 name: Run Copyright and license check from PR
-
+ 
 on:
   pull_request:
-    branches:
-      - main
-      - master
-
+    types: [opened, synchronize, reopened]
+ 
 jobs:
-  run-python-script:
+  generate-diff:
     runs-on: ubuntu-latest
-
+ 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Generate patch file
-      run: |
-        git diff > patch_file.patch
-
-    - name: Print patch file content
-      run: |
-        cat patch_file.patch
-      shell: bash
-
-    - name: Run Python Script Action
-      uses: targoy-qti/copyright-license-checker-action@main
-      with:
-        patch_file: patch_file.patch
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed to access base commit in all cases
+ 
+      - name: Fetch base branch
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+ 
+      - name: Generate patch
+        run: |
+          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > pr.patch
+          echo "Patch generated:"
+          head -n 20 pr.patch
+ 
+      - name: Run reusable action
+        uses: targoy-qti/copyright-license-checker-action@main
+        with:
+          patch_file: pr.patch
