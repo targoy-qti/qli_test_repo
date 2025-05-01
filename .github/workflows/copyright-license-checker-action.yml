@@ -25,6 +25,6 @@ jobs:
           head -n 20 pr.patch
  
       - name: Run reusable action
-        uses: targoy-qti/copyright-license-checker-action@main
+        uses: targoy-qti/copyright-license-checker-action@v1
         with:
           patch_file: pr.patch
