@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+// SPDX-License-Identifier: BSD-3-Clause
 // Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries. 
 
 import java.lang.annotation.Retention;
