@@ -1,4 +1,4 @@
-name: Run Copyright and license check from PR
+name: Run Copyright and license check
  
 on:
   pull_request:
@@ -23,8 +23,12 @@ jobs:
           git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > pr.patch
           echo "Patch generated:"
           head -n 20 pr.patch
+      
+      - name: Get repository name
+        run: echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
  
-      - name: Run reusable action
+      - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@v1
         with:
           patch_file: pr.patch
+          repo_name: ${{ env.REPO_NAME }}
