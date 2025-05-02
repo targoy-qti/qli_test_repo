@@ -1,8 +1,14 @@
 name: Run Copyright and license check
- 
 on:
+ # Event for public repository PR secrets
   pull_request_target:
+    branches: [main, master]
     types: [opened, synchronize, reopened]
+  push:
+    branches: [main, release*]
+  release:
+    types: [prereleased, released]
+  workflow_dispatch:
  
 jobs:
   copyright-license-check:
