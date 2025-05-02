@@ -1,0 +1,326 @@
+diff --git a/overlay/frameworks/base/core/res/res/values/config.xml b/overlay/frameworks/base/core/res/res/values/config.xml
+index b0be72d..1893065 100644
+--- a/overlay/frameworks/base/core/res/res/values/config.xml
++++ b/overlay/frameworks/base/core/res/res/values/config.xml
+@@ -141,4 +141,18 @@
+        <item>240</item>
+        <item>255</item>
+    </integer-array>
++
++    <!-- The name of the package that will hold the dialer role by default. -->
++    <string name="config_defaultDialer" translatable="false">org.codeaurora.dialer</string>
++
++    <!-- The name of the package that will hold the SMS role by default. -->
++    <string name="config_defaultSms" translatable="false">com.android.mms</string>
++
++    <!-- MMS user agent string -->
++    <string name="config_mms_user_agent" translatable="false">Android-Mms/2.0</string>
++
++    <!-- MMS user agent prolfile url -->
++    <string name="config_mms_user_agent_profile_url" translatable="false"
++        >http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
++
+ </resources>
+diff --git a/overlay/frameworks/base/core/res/res/values/required_apps_managed_device.xml b/overlay/frameworks/base/core/res/res/values/required_apps_managed_device.xml
+new file mode 100644
+index 0000000..bae987b
+--- /dev/null
++++ b/overlay/frameworks/base/core/res/res/values/required_apps_managed_device.xml
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++/**
++ * Copyright (C) 2017 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ * Changes from Qualcomm Innovation Center are provided under the following license:
++ * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
++ * SPDX-License-Identifier: BSD-3-Clause-Clear
++ */
++-->
++<resources>
++    <!-- A list of apps to be retained on the managed device.
++            Takes precedence over the disallowed apps lists. -->
++    <string-array translatable="false" name="required_apps_managed_device">
++        <item>com.android.settings</item>
++        <item>com.android.systemui</item>
++        <item>com.android.contacts</item>
++        <item>org.codeaurora.dialer</item>
++        <item>com.android.stk</item>  <!-- Required by com.android.phone by certain carriers -->
++        <item>com.android.providers.downloads</item>
++        <item>com.android.providers.downloads.ui</item>
++        <item>com.android.documentsui</item>
++        <item>com.android.cellbroadcastreceiver</item>
++    </string-array>
++</resources>
+diff --git a/overlay/packages/services/Telecomm/res/values/config.xml b/overlay/packages/services/Telecomm/res/values/config.xml
+new file mode 100755
+index 0000000..671dec1
+--- /dev/null
++++ b/overlay/packages/services/Telecomm/res/values/config.xml
+@@ -0,0 +1,43 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!-- Copyright (c) 2018, The Linux Foundation. All rights reserved.
++
++     Redistribution and use in source and binary forms, with or without
++     modification, are permitted (subject to the limitations in the
++     disclaimer below) provided that the following conditions are met:
++
++        * Redistributions of source code must retain the above copyright
++          notice, this list of conditions and the following disclaimer.
++        * Redistributions in binary form must reproduce the above
++          copyright notice, this list of conditions and the following
++          disclaimer in the documentation and/or other materials provided
++          with the distribution.
++        * Neither the name of the Linux Foundation nor the names of its
++          contributors may be used to endorse or promote products derived
++          from this software without specific prior written permission.
++
++     NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
++     GRANTED BY THIS LICENSE.  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
++     HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
++     WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
++     LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++     CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++     SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
++     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++     WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
++     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++-->
++<!-- Telecomm app resources that may need to be customized
++     for different hardware or product builds. -->
++<resources>
++
++    <!-- Class name for the default in-call UI Service [DO NOT TRANSLATE] -->
++    <string name="incall_default_class" translatable="false">com.android.incallui.InCallServiceImpl</string>
++
++    <!-- Class name for the default main dialer activity [DO NOT TRANSLATE] -->
++    <string name="dialer_default_class" translatable="false">com.android.dialer.DialtactsActivity</string>
++    <!-- Flag indicating if the tty is enabled -->
++    <bool name="tty_enabled">true</bool>
++</resources>
+diff --git a/overlay/packages/services/Telephony/res/values-watch/demens.xml b/overlay/packages/services/Telephony/res/values-watch/demens.xml
+deleted file mode 100644
+index 67d511b..0000000
+--- a/overlay/packages/services/Telephony/res/values-watch/demens.xml
++++ /dev/null
+@@ -1,30 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!-- Copyright (C) 2011 The Android Open Source Project
+-
+-     Licensed under the Apache License, Version 2.0 (the "License");
+-     you may not use this file except in compliance with the License.
+-     You may obtain a copy of the License at
+-
+-          http://www.apache.org/licenses/LICENSE-2.0
+-
+-     Unless required by applicable law or agreed to in writing, software
+-     distributed under the License is distributed on an "AS IS" BASIS,
+-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-     See the License for the specific language governing permissions and
+-     limitations under the License.
+-
+-     Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+-     Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+-     SPDX-License-Identifier: BSD-3-Clause-Clear
+--->
+-
+-<resources>
+-    <dimen name="dialpad_space_above_keys">2dp</dimen>
+-    <dimen name="floating_action_button_width">42dp</dimen>
+-    <dimen name="floating_action_button_height">42dp</dimen>
+-    <dimen name="floating_action_button_margin_bottom">2dp</dimen>
+-    <dimen name="emergency_info_button_margin_top">2dp</dimen>
+-    <dimen name="emergency_info_button_margin_bottom">2dp</dimen>
+-    <dimen name="emergency_info_button_height">40dp</dimen>
+-    <dimen name="dialpad_button_height">23dp</dimen>
+-</resources>
+\ No newline at end of file
+diff --git a/overlay/packages/services/Telephony/res/values-watch/styles.xml b/overlay/packages/services/Telephony/res/values-watch/styles.xml
+deleted file mode 100644
+index 3141f4d..0000000
+--- a/overlay/packages/services/Telephony/res/values-watch/styles.xml
++++ /dev/null
+@@ -1,34 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!-- Copyright (C) 2007 The Android Open Source Project
+-
+-     Licensed under the Apache License, Version 2.0 (the "License");
+-     you may not use this file except in compliance with the License.
+-     You may obtain a copy of the License at
+-
+-          http://www.apache.org/licenses/LICENSE-2.0
+-
+-     Unless required by applicable law or agreed to in writing, software
+-     distributed under the License is distributed on an "AS IS" BASIS,
+-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-     See the License for the specific language governing permissions and
+-     limitations under the License.
+-
+-     Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+-     Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+-     SPDX-License-Identifier: BSD-3-Clause-Clear
+--->
+-
+-<resources>
+-     <style name="EmergencyDialerTheme" parent="@android:style/Theme.Material.NoActionBar">
+-        <item name="android:forceDarkAllowed">true</item>
+-        <item name="android:colorPrimaryDark">?android:attr/colorPrimary</item>
+-        <item name="android:colorBackgroundCacheHint">@null</item>
+-        <item name="android:windowShowWallpaper">true</item>
+-        <item name="android:statusBarColor">@android:color/transparent</item>
+-        <item name="android:navigationBarColor">@android:color/transparent</item>
+-        <item name="android:homeAsUpIndicator">@drawable/ic_back_arrow</item>
+-        <item name="emergencyButtonBackgroundColor">#10ffffff</item>
+-        <item name="dialpadTheme">@style/Dialpad_DarkTransparent.Emergency</item>
+-        <item name="android:windowFullscreen">true</item>
+-    </style>
+-</resources>
+diff --git a/overlay/packages/services/Telephony/res/values/config.xml b/overlay/packages/services/Telephony/res/values/config.xml
+new file mode 100644
+index 0000000..f449a5b
+--- /dev/null
++++ b/overlay/packages/services/Telephony/res/values/config.xml
+@@ -0,0 +1,64 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--Copyright (c) 2013, The Linux Foundation. All rights reserved.
++
++    Not a Contribution, Apache license notifications and license are retained
++    for attribution purposes only.
++
++    Licensed under the Apache License, Version 2.0 (the "License"); you
++    may not use this file except in compliance with the License.  You may
++    obtain a copy of the License at
++
++    http://www.apache.org/licenses/LICENSE-2.0
++
++    Unless required by applicable law or agreed to in writing, software
++    distributed under the License is distributed on an "AS IS" BASIS,
++    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
++    implied.  See the License for the specific language governing
++    permissions and limitations under the License. -->
++
++<!-- Phone app resources that may need to be customized
++     for different hardware or product builds. -->
++<resources>
++    <!-- Determine whether we should show the "listen for instructions" screen after
++         successfully placing the OTA call -->
++    <integer name="OtaShowListeningScreen">1</integer>
++
++    <!-- Flag indicating if the phone is a world phone -->
++    <bool name="world_phone">true</bool>
++
++    <!-- Flag indicating if dtmf tone type is enabled -->
++    <bool name="dtmf_type_enabled">true</bool>
++
++    <!-- Determine whether calls to mute the microphone in PhoneUtils
++         are routed through the android.media.AudioManager class (true) or through
++         the com.android.internal.telephony.Phone interface (false). -->
++    <bool name="send_mic_mute_to_AudioManager">true</bool>
++
++    <!-- If this is true, the SIM card (through Customer Service Profile EF file) will be
++         able to prevent manual operator selection. If false, this SIM setting will be
++         ignored and manual operator selection will always be available. See
++         CPHS4_2.WW6, CPHS B.4.7.1 for more information -->
++    <bool name="csp_enabled">true</bool>
++
++    <!-- Show Preferred Network Type options in No SIM case -->
++    <bool name="config_no_sim_display_network_modes">true</bool>
++
++    <!-- Show RTT option in Accessibility menu -->
++    <bool name="config_support_rtt">true</bool>
++
++    <!-- String indicating the package name of the device ImsService implementation for MMTEL -->
++    <string name="config_ims_mmtel_package">org.codeaurora.ims</string>
++
++    <!-- String indicating the package name of the device ImsService implementation for RCS -->
++    <string name="config_ims_rcs_package">vendor.qti.imsrcs</string>
++
++    <!-- Package name for the call-based number verification app -->
++    <string name="platform_number_verification_package" translatable="false">com.google.android.gms</string>
++
++    <!-- String indicating the package name of the device GbaService implementation. -->
++    <string name="config_gba_package" translatable="false">com.qualcomm.qti.uimGbaApp</string>
++
++    <!-- Whether the device supports dialing emergency RTT calls when there's no SIM
++         card installed -->
++    <bool name="config_support_simless_emergency_rtt">true</bool>
++</resources>
+diff --git a/overlay/packages/services/Telephony/res/xml/telephony_injection.xml b/overlay/packages/services/Telephony/res/xml/telephony_injection.xml
+new file mode 100644
+index 0000000..24da227
+--- /dev/null
++++ b/overlay/packages/services/Telephony/res/xml/telephony_injection.xml
+@@ -0,0 +1,59 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++  Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
++  All rights reserved.
++  Confidential and Proprietary - Qualcomm Technologies, Inc.
++
++  Not a contribution.
++
++  Copyright (C) 2018 The Android Open Source Project
++
++  Licensed under the Apache License, Version 2.0 (the "License");
++  you may not use this file except in compliance with the License.
++  You may obtain a copy of the License at
++
++      http://www.apache.org/licenses/LICENSE-2.0
++
++  Unless required by applicable law or agreed to in writing, software
++  distributed under the License is distributed on an "AS IS" BASIS,
++  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  See the License for the specific language governing permissions and
++  limitations under the License.
++-->
++
++<!-- package: customized component factory to inject,
++        e.g. "example.package.exampleTelephonyComponentFactory"
++     jar: jar path to customized jar which contains exampleTelephonyComponentFactory to inject, and
++     "/system/framework/" should be the target directory.
++        e.g. "/system/framework/eg-telephony-common.jar"
++-->
++<injection package="com.qualcomm.qti.internal.telephony.QtiTelephonyComponentFactory"
++           jar="/system_ext/framework/qti-telephony-common.jar:/product/framework/qti-telephony-common.jar:/product/framework/qti-telephony-hidl-wrapper.jar:/system_ext/framework/qti-telephony-hidl-wrapper.jar:/product/framework/qti-telephony-utils.jar:/system_ext/framework/qti-telephony-utils.jar:/system_ext/framework/extphonelib.jar:/product/framework/ims-ext-common.jar">
++    <components>
++        <!-- Components use injected component factory,
++            e.g. com.android.internal.telephony.ServiceStateTracker
++        -->
++        <!--<component>com.example.componentA</component>-->
++        <!--<component>com.example.componentB</component>-->
++        <component>com.android.internal.telephony.ServiceStateTracker</component>
++        <component>com.android.internal.telephony.subscription.SubscriptionManagerService</component>
++        <component>com.android.internal.telephony.GsmCdmaPhone</component>
++        <component>com.android.internal.telephony.data.PhoneSwitcher</component>
++        <component>com.android.internal.telephony.IccPhoneBookInterfaceManager</component>
++        <component>com.android.internal.telephony.IccSmsInterfaceManager</component>
++        <component>com.android.internal.telephony.SmsDispatchersController</component>
++        <component>com.android.internal.telephony.RIL</component>
++        <component>com.android.internal.telephony.TelephonyComponentFactory</component>
++        <component>com.android.internal.telephony.MultiSimSettingController</component>
++        <component>com.android.internal.telephony.CarrierInfoManager</component>
++        <component>com.android.internal.telephony.data.DataNetworkController</component>
++        <component>com.android.internal.telephony.data.DataConfigManager</component>
++        <component>com.android.internal.telephony.data.DataProfileManager</component>
++        <component>com.android.internal.telephony.data.DataRetryManager</component>
++        <component>com.android.internal.telephony.data.DataServiceManager</component>
++        <component>com.android.internal.telephony.data.TelephonyNetworkAgent</component>
++        <component>com.android.internal.telephony.data.DataSettingsManager</component>
++        <component>com.android.internal.telephony.data.TelephonyNetworkFactory</component>
++        <component>com.android.internal.telephony.data.TelephonyNetworkProvider</component>
++    </components>
++</injection>
