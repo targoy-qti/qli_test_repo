@@ -1,38 +1,32 @@
 name: Run Copyright and license check
-
+ 
 on:
   pull_request:
-    branches: [main, master]
     types: [opened, synchronize, reopened]
-  workflow_dispatch:
-
+ 
 jobs:
   copyright-license-check:
     runs-on: ubuntu-latest
-
+ 
     steps:
       - name: Checkout PR code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Needed to access base commit in all cases
-
+ 
       - name: Fetch base branch
         run: |
           git fetch origin ${{ github.event.pull_request.base.ref }}
-
-      - name: Checkout base branch
-        run: |
-          git checkout ${{ github.event.pull_request.base.ref }}
-
+ 
       - name: Generate patch
         run: |
-          git diff ${{ github.event.pull_request.base.ref }}...HEAD > pr.patch
+          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > pr.patch
           echo "Patch generated:"
           head -n 20 pr.patch
       
       - name: Get repository name
         run: echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
-
+ 
       - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@v1
         with:
