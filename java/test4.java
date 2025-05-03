@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
-// Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries. 
+
+// Copyright (c) Google Technologies, Inc. and/or its subsidiaries.
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
