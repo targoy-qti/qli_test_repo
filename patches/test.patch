@@ -1,0 +1,230 @@
+From 1234567890abcdef1234567890abcdef12345678 Mon Sep 17 00:00:00 2001
+From: Test User <test@example.com>
+Date: Thu, 1 Apr 2021 12:34:56 +0000
+Subject: [PATCH] Add multiple files with multiple licenses
+
+---
+ new_file1.py  | 6 ++++++
+ new_file2.py  | 6 ++++++
+ new_file3.py  | 6 ++++++
+ new_file4.py  | 6 ++++++
+ new_file5.py  | 6 ++++++
+ new_file6.py  | 6 ++++++
+ new_file7.py  | 6 ++++++
+ new_file8.py  | 6 ++++++
+ new_file9.py  | 6 ++++++
+ new_file10.py | 6 ++++++
+ new_file11.py | 6 ++++++
+ new_file12.py | 6 ++++++
+ new_file13.py | 6 ++++++
+ new_file14.py | 6 ++++++
+ new_file15.py | 6 ++++++
+ new_file16.py | 6 ++++++
+ new_file17.py | 6 ++++++
+ new_file18.py | 6 ++++++
+ new_file19.py | 6 ++++++
+ new_file20.py | 6 ++++++
+ modified_file.py | 8 +++++++-
+ deleted_file.py  | 2 --
+ renamed_file.py  | 2 +-
+ 23 files changed, 122 insertions(+), 3 deletions(-)
+ create mode 100644 new_file1.py
+ create mode 100644 new_file2.py
+ create mode 100644 new_file3.py
+ create mode 100644 new_file4.py
+ create mode 100644 new_file5.py
+ create mode 100644 new_file6.py
+ create mode 100644 new_file7.py
+ create mode 100644 new_file8.py
+ create mode 100644 new_file9.py
+ create mode 100644 new_file10.py
+ create mode 100644 new_file11.py
+ create mode 100644 new_file12.py
+ create mode 100644 new_file13.py
+ create mode 100644 new_file14.py
+ create mode 100644 new_file15.py
+ create mode 100644 new_file16.py
+ create mode 100644 new_file17.py
+ create mode 100644 new_file18.py
+ create mode 100644 new_file19.py
+ create mode 100644 new_file20.py
+
+diff --git a/new_file1.py b/new_file1.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file1.py
+@@ -0,0 +1,6 @@
++# Copyright (c) Google Inc. and/or its subsidiaries.
++Copyright (c) Qualcomm Innovation Center, Inc. All rights reserved.
++ 
++ Redistribution and use in source and binary forms, with or without
++ modification, are permitted (subject to the limitations in the
++ disclaimer below) provided that the following conditions are met:
++ 
++     * Redistributions of source code must retain the above copyright
++       notice, this list of conditions and the following disclaimer.
++ 
++     * Redistributions in binary form must reproduce the above
++       copyright notice, this list of conditions and the following
++       disclaimer in the documentation and/or other materials provided
++       with the distribution.
++ 
++     * Neither the name of Qualcomm Innovation Center, Inc. nor the names of its
++       contributors may be used to endorse or promote products derived
++       from this software without specific prior written permission.
++ 
++ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
++ GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
++ HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
++ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
++ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
++ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
++ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
++ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
++ IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
++ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
++ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
++print("Hello, world!")
++
+
+diff --git a/new_file2.py b/new_file2.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file2.py
+@@ -0,0 +1,6 @@
++# Copyright (c) Google Inc. and/or its subsidiaries.
++# SPDX-License-Identifier: Apache-2.0
++# Commercial License XYZ Corp.
+
++This program is free software; you can redistribute it and/or
++modify it under the terms of the GNU General Public License
++as published by the Free Software Foundation; either version 2
++of the License, or (at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
+
++
++print("Hello, world!")
++print("This file has multiple licenses.")
++
+
+diff/new_file3.py b/new_file3.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file3.py
+@@ -0,0 +1,6 @@
++# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
++# Proprietary License ABC Inc.
++# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
++
++print("Hello, world!")
++print("This file has multiple licenses.")
++
+
+diff --git a/new_file4.py b/new_file4.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file4.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: MPL-2.0
++# Commercial License DEF Corp.
++
++print("Hello, world!")
++print("This file has multiple licenses.")
++
+
+diff --git a/new_file5.py b/new_file5.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file5.py
+@@ -0,0 +1,6 @@
++# Proprietary License GHI Inc.
++
++print("Hello, world!")
++print("This file has multiple licenses.")
++
+
+diff --git a/new_file6.py b/new_file6.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file6.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: BSD-3-Clause
++
++print("Hello, world!")
++print("This file has a BSD-3-Clause license.")
++
+
+diff --git a/new_file7.py b/new_file7.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file7.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: MIT
++
++print("Hello, world!")
++print("This file has a MIT license.")
++
+
+diff --git a/new_file8.py b/new_file8.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file8.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++
++print("Hello, world!")
++print("This file has a GPL-3.0-or-later license.")
++
+
+diff --git a/new_file9.py b/new_file9.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file9.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: LGPL-2.1-or-later
++
++print("Hello, world!")
++print("This file has a LGPL-2.1-or-later license.")
++
+
+diff --git a/new_file10.py b/new_file10.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file10.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: AGPL-3.0-or-later
++
++print("Hello, world!")
++print("This file has an AGPL-3.0-or-later license.")
++
+
+diff --git a/new_file11.py b/new_file11.py
+new file mode 100644
+index 0000000..e69de29
+--- /dev/null
++++ b/new_file11.py
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: MPL-2.0
++
++print("Hello, world!")
++print("This file has an MPL-2.0 license.")
++
+
