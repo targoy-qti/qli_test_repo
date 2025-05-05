@@ -1,5 +1,4 @@
-name: Run Copyright and license check
- 
+name: Run Copyright and license check 
 on:
   pull_request:
     types: [opened, synchronize]
@@ -8,21 +7,12 @@ jobs:
   prepare-and-call:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch PR patch content
+      - name: Fetch and decode PR patch
         run: |
           curl -sL ${{ github.event.pull_request.url }}.patch -o pr.patch
-          base64 pr.patch > patch.b64
- 
-      - name: Prepare inputs
-        id: inputs
-        run: |
-          echo "patch_file<<EOF" >> $GITHUB_OUTPUT
-          cat patch.b64 >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "repo_name=${{ github.repository }}" >> $GITHUB_OUTPUT
       
       - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@main
         with:
-          patch_file: ${{ steps.inputs.outputs.patch_file }}
-          repo_name: ${{ steps.inputs.outputs.repo_name }}
+          patch_file: pr.patch
+          repo_name: ${{ github.repository }}
