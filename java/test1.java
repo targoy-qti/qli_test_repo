@@ -1,5 +1,5 @@
 // Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries. 
-// SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+// SPDX-License-Identifier: GPL-2.0
 
 package android.bluetooth;
 
