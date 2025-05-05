@@ -10,6 +10,7 @@ jobs:
       - name: Fetch and decode PR patch
         run: |
           curl -sL ${{ github.event.pull_request.url }}.patch -o pr.patch
+          head -n 100 pr.patch
       
       - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@main
