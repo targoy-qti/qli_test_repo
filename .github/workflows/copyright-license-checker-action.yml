@@ -22,9 +22,32 @@ jobs:
       - name: Generate final patch between base and head
         run: |
           git diff upstream/${{ github.event.pull_request.base.ref }} > pr.patch
- 
-      - name: Call reusable license-check workflow
-        uses: your-org/reusable-actions-repo/.github/workflows/license-check.yml@main
+          head -n 100 pr.patch
+
+      - name: Upload patch file
+        uses: actions/upload-artifact@v3
+        with:
+          name: pr-patch
+          path: pr.patch
+
+  run-checks:
+    runs-on: ubuntu-latest
+    needs: fetch-and-run
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - name: Download patch file
+        uses: actions/download-artifact@v3
+        with:
+          name: pr-patch
+
+      - name: Run copyright/license detector
+        uses: targoy-qti/copyright-license-checker-action@main
         with:
           patch_file: pr.patch
-          repo_name: ${{ github.repository }}}
+          repo_name: ${{ github.repository }}
