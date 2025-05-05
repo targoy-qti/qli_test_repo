@@ -15,7 +15,8 @@ jobs:
 
       - name: Fetch and decode PR patch
         run: |
-          curl -H "Accept: application/vnd.github.v3.patch" -sL ${{ github.event.pull_request.url }} > pr.patch
+          git fetch origin +refs/pull/${{ github.event.pull_request.number }}/merge
+          git diff origin/${{ github.event.pull_request.base.ref }}..FETCH_HEAD > pr.patch
           head -n 100 pr.patch
       
       - name: Run copyright/license detector
