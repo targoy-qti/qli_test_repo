@@ -2,33 +2,27 @@ name: Run Copyright and license check
  
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize]
  
 jobs:
-  copyright-license-check:
+  prepare-and-call:
     runs-on: ubuntu-latest
- 
     steps:
-      - name: Checkout PR code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Needed to access base commit in all cases
- 
-      - name: Fetch base branch
+      - name: Fetch PR patch content
         run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }}
+          curl -sL ${{ github.event.pull_request.url }}.patch -o pr.patch
+          base64 pr.patch > patch.b64
  
-      - name: Generate patch
+      - name: Prepare inputs
+        id: inputs
         run: |
-          git diff origin/${{ github.event.pull_request.base.ref }}...HEAD > pr.patch
-          echo "Patch generated:"
-          head -n 20 pr.patch
+          echo "patch_content<<EOF" >> $GITHUB_OUTPUT
+          cat patch.b64 >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "repo_name=${{ github.repository }}" >> $GITHUB_OUTPUT
       
-      - name: Get repository name
-        run: echo "REPO_NAME=${{ github.repository }}" >> $GITHUB_ENV
- 
       - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@v1
         with:
-          patch_file: pr.patch
-          repo_name: ${{ env.REPO_NAME }}
+          patch_content: ${{ steps.inputs.outputs.patch_content }}
+          repo_name: ${{ steps.inputs.outputs.repo_name }}
