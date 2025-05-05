@@ -16,7 +16,7 @@ jobs:
       - name: Prepare inputs
         id: inputs
         run: |
-          echo "patch_content<<EOF" >> $GITHUB_OUTPUT
+          echo "patch_file<<EOF" >> $GITHUB_OUTPUT
           cat patch.b64 >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
           echo "repo_name=${{ github.repository }}" >> $GITHUB_OUTPUT
@@ -24,5 +24,5 @@ jobs:
       - name: Run copyright/license detector
         uses: targoy-qti/copyright-license-checker-action@main
         with:
-          patch_content: ${{ steps.inputs.outputs.patch_content }}
+          patch_file: ${{ steps.inputs.outputs.patch_file }}
           repo_name: ${{ steps.inputs.outputs.repo_name }}
