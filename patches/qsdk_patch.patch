@@ -99,7 +99,6 @@ index e50ce49..a5e9c81 100644
 @@ -2,6 +2,10 @@
  #define __BACKPORT_LINUX_DMA_MAPPING_H
  #include_next <linux/dma-mapping.h>
--#SPDX-License-Identifier: GPL-2.0-only
 +#ifdef CPTCFG_MAC80211_ATHMEMDEBUG
 +#include <linux/athdebug_dma-mapping.h>
 +#endif
