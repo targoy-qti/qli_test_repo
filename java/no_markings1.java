@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 package android.bluetooth;
 
 import static android.bluetooth.BluetoothUtils.getSyncTimeout;
