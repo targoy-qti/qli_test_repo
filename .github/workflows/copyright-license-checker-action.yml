@@ -17,7 +17,7 @@ jobs:
         run: |
           git fetch origin +refs/pull/${{ github.event.pull_request.number }}/merge
           git checkout FETCH_HEAD
-          git diff origin/${{ github.event.pull_request.base.ref }} > pr.patch
+          git diff $(git merge-base FETCH_HEAD origin/${{ github.event.pull_request.base.ref }}) FETCH_HEAD > pr.patch
           head -n 100 pr.patch
       
       - name: Run copyright/license detector
