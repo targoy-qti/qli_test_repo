@@ -222,7 +222,7 @@ index 0000000..e69de29
 --- /dev/null
 +++ b/new_file11.py
 @@ -0,0 +1,6 @@
-+# SPDX-License-Identifier: GPL2.0
++# SPDX-License-Identifier: MPL2.0
 +
 +print("Hello, world!")
 +print("This file has an MPL-2.0 license.")
