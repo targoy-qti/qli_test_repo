@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Fetch and decode PR patch
         run: |
-          curl -sL ${{ github.event.pull_request.url }}.patch -o pr.patch
+          curl -H "Accept: application/vnd.github.v3.patch" -sL ${{ github.event.pull_request.url }} > pr.patch
           head -n 100 pr.patch
       
       - name: Run copyright/license detector
