@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-2.0-only
+// SPDX-License-Identifier: MIT
 // Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 
 import java.lang.annotation.Retention;
