@@ -1,4 +1,4 @@
-// Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+// Copyright (c) Qualcomm Technologies, Inc.
 // All rights reserved.
 // Confidential and Proprietary - Qualcomm Technologies, Inc with Commercial
 
