@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) The Android Open Source Project
  * SPDX-License-Identifier: GPL-2.0-only
  */
 
